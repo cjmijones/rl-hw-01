@@ -26,28 +26,28 @@ Please use object-oriented programming, i.e. create classes.
 
 You can organize the package however you like, for example, in a `simulation` module and a `solver` module.
 
-It is recommended that you prototype in `.py`, once the packaged is finalized you can run a notebook one last time at the end for summarization of the results. 
+It is recommended that you prototype in `.py`, once the packaged is finalized you can run a notebook one last time at the end for summarization of the results.
 
 * Feel free to use Co-Pilot or Cursor for development acceleration, but don't rely on it so much that you lose sight of the big picture, or logical flow of your code, i.e. develop slowly, via incremental improvement
   * For example, create a code block to implement some functionality, make sure your understand it completely
   * Run `unit-tests` to make sure the code is working 100% correctly
     * **Note**: A `unit test` verifies the correctness of a small, specific section of code, such as a function or method, by testing its output against expected results, ensuring functionality in isolation.
-  * Debug and improve until the code is working robustly and as intended 
+  * Debug and improve until the code is working robustly and as intended
   * Move onto the next code challenge and repeat the process
 
 Have a `verbose` flag that when `True` reports all relevant quantities in a clean and professional manner and generates a set of relevant plots, e.g. arrow plot for the optimal policy, convergence plots for the value function, etc.
 
-The package should implement the following functionality 
+The package should implement the following functionality
 
-### Simulator 
+### Simulator
 
-Simulate the "games" outlined below  
+Simulate the "games" outlined below
 
 * All environment simulations should be wrapped in the standard `gym` formalism
-* Your code should work for the following games  
+* Your code should work for the following games
   * `Boat`
-  * `Grid-world` 
-  * `Geosearch` 
+  * `Grid-world`
+  * `Geosearch`
 * **Optional**: Visualize game-play progress, e.g. via a `GIF` progress
 
 **Game details**
@@ -68,11 +68,11 @@ Specific version of grid-world
 
 Where the environmental noise comes from the robot malfunctioning and only doing the specified action with probability $1-\gamma$, use $\gamma=0.25$
 
-`Geosearch`:  
+`Geosearch`:
 
 This is another grid-world but slightly more complicated, use a 25x25 grid
 
-* Assume there is a set of "resource distribution functions" 
+* Assume there is a set of "resource distribution functions"
 
 For example:
 
@@ -86,7 +86,7 @@ These simulate layers of geographic quantities of interest withing the grid-worl
 
 For simplicity assume these are just 2D Gaussian distributions as follows
 
-$$f(x, y)=\frac{1}{2 \pi \sigma_X \sigma_Y \sqrt{1-\rho^2}} \mathrm{e}^{-\frac{1}{2\left(1-\rho^2\right)}\left[\left(\frac{x-\mu_X}{\sigma_X}\right)^2-2 \rho\left(\frac{x-\mu_X}{\sigma_X}\right)\left(\frac{y-\mu_Y}{\sigma_Y}\right)+\left(\frac{y-\mu_Y}{\sigma_Y}\right)^2\right]}$$ 
+$$f(x, y)=\frac{1}{2 \pi \sigma_X \sigma_Y \sqrt{1-\rho^2}} \mathrm{e}^{-\frac{1}{2\left(1-\rho^2\right)}\left[\left(\frac{x-\mu_X}{\sigma_X}\right)^2-2 \rho\left(\frac{x-\mu_X}{\sigma_X}\right)\left(\frac{y-\mu_Y}{\sigma_Y}\right)+\left(\frac{y-\mu_Y}{\sigma_Y}\right)^2\right]}$$
 
 For the parameters $\boldsymbol{\mu}$ and $\mathbf{\Sigma}$
 
@@ -105,11 +105,11 @@ From these, you can create a matrix (heat-map), with the value of these function
 
 The state-reward is created based on a weighted sum of these
 
-$R(x,y)= A f_1(x,y) + (1-A) f_2(x,y)$ 
+$R(x,y)= A f_1(x,y) + (1-A) f_2(x,y)$
 
 Where $A$ is a user-parameter that defines the explorers primary interests, for example (A)=1 would mean they only care about water and not gold. For consistancy, Please use `A=0.75`
 
-## Solver 
+## Solver
 
 Unless otherwise stated, for each method below, start with a initial random policy where each transition is equally likely, e.g. [0.5,0.5] for the boat example, or a [0.25,0.25,0.25,0.25] for the grid-worlds. To balance the exploration-exploitation trade-off, use epsilon-greedy policy with $\epsilon=0.1$.
 
@@ -179,7 +179,7 @@ Important: Add markdown cells throughout to explain your results, and include ad
 
 If `game == Boat`, you should also output the analytical solution for the state values. You can start with the final solution; the derivation of the analytical solution is not required, as it is provided in the lecture notes and was part of your exam.
 
-## Optional Aside 
+## Optional Aside
 
 For the `Geo-search`, the equation for the reward function can be generalized to include more than two variables.
 For example, if you have $N$ different resource distributions, the reward function can be expressed as a weighted sum of these distributions. The general form would be:
