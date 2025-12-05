@@ -1,0 +1,29 @@
+/* Use CSS variables for text color */
+h1 > .header-section-number,
+h2 > .header-section-number,
+h3 > .header-section-number,
+h4 > .header-section-number {
+  color: var(--bs-body-color); /* This variable changes based on theme */
+  margin-right: 0.4em; /* optional: spacing between number and title */
+}
+
+/* Drop shadow for images */
+.shadow {
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    /* Removed specific border-color: black; */
+  }
+
+  /* Padding around the image */
+  .padded {
+    padding: 12px;
+  }
+
+  /* Optional: Center image captions below */
+  .reveal figure figcaption {
+    text-align: center;
+    font-style: italic;
+    font-size: 0.9em;
+  }
+
+/* Removed 'body' background definition entirely. Quarto handles this now. */
